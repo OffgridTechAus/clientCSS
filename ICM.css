@@ -5,3 +5,7 @@
 .hours-grid .text-component {
   color: green !important;
 }
+
+.embed-code-1 {
+  display: none !important;
+}
