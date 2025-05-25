@@ -4,7 +4,7 @@
  * Released under the MIT License
  * https://github.com/ryxxn/pwa-install-prompt
  */
-let deferredPrompt; // Global reference
+let deferredPrompt;
 
 const TEXT = {
   TITLE: 'Install as an app',
@@ -21,20 +21,6 @@ const TEXT = {
     }
   },
 };
-
-const MODAL_STYLE = `
-  .wepp-modal-overlay *{box-sizing:border-box}
-  .wepp-modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);justify-content:center;align-items:center;z-index:99999}
-  .wepp-modal-content{min-width:340px;max-width:340px;background:#fff;border-radius:10px;position:relative}
-  .wepp-modal-content h1{font-size:18px}
-  .wepp-modal-body{display:flex;flex-direction:column;align-items:center;gap:10px}
-  #wepp-logo{border-radius:8px}
-  #wepp-install-button{width:100%;background:#007bff;color:#fff;border:none;border-radius:5px;font-size:18px;cursor:pointer;font-weight:700;transition:.3s}
-  #wepp-install-button:hover{background:#0056b3}
-  #wepp-install-button:active{transform:scale(.98)}
-  #wepp-install-button:disabled{opacity:.7;cursor:not-allowed}
-  #wepp-skip-button{all:initial;font:inherit;width:100%;text-align:center;cursor:pointer;color:#a0a0a0;font-size:14px;text-decoration:underline}
-`;
 
 const IOS_MODAL_CONTENT = `
   <div class="wepp-modal-content" style="padding:20px;">
@@ -65,18 +51,6 @@ const DEFAULT_MODAL_CONTENT = `
   </div>
 `;
 
-function getFaviconHref() {
-  const links = document.getElementsByTagName('link');
-  for (let link of links) if (link.rel === 'icon') return link.href;
-  return '';
-}
-
-function appendStyles() {
-  const style = document.createElement('style');
-  style.textContent = MODAL_STYLE;
-  document.head.appendChild(style);
-}
-
 const getModalContent = isIOS => isIOS ? IOS_MODAL_CONTENT : DEFAULT_MODAL_CONTENT;
 
 function createContainer() {
@@ -94,7 +68,7 @@ const handleHashChange = () => {
 
 const initializePWAInfo = () => {
   document.getElementById('wepp-name').textContent = document.title;
-  document.getElementById('wepp-logo').src = getFaviconHref();
+  document.getElementById('wepp-logo').src = '';  // Removed favicon reference here
 };
 
 function handleModalClose() {
@@ -119,7 +93,6 @@ function main() {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-  appendStyles();
   const container = createContainer();
   container.innerHTML = getModalContent(isIOS);
   handleHashChange();
@@ -153,7 +126,7 @@ function main() {
         }
       }, { once: true });
 
-      clearTimeout(timeoutId); // cancel timeout if fired in time
+      clearTimeout(timeoutId);
     });
 
     timeoutId = setTimeout(() => {
