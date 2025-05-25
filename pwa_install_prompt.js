@@ -109,22 +109,7 @@ function main() {
     const installBtn = document.getElementById('wepp-install-button');
     let timeoutId;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-
-      installBtn.disabled = false;
-      installBtn.innerText = TEXT.INSTALL_BUTTON;
-
-      installBtn.addEventListener('click', () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(choice => {
-            if (choice.outcome === 'accepted') handleModalClose();
-            deferredPrompt = null;
-          });
-        }
-      }, { once: true });
+   
 
       clearTimeout(timeoutId);
     });
