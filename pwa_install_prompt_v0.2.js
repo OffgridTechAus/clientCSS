@@ -222,7 +222,7 @@ function main() {
     const installButton = document.getElementById('wepp-install-button');
 
     window.addEventListener('beforeinstallprompt', (e) => {
-      //e.preventDefault();
+      ////e.preventDefault();
       const deferredPrompt = e;
       installButton.addEventListener('click', () => showPrompt(deferredPrompt), { once: true })
       installButton.innerText = TEXT.INSTALL_BUTTON;
