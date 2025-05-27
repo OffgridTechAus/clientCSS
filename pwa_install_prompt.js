@@ -35,9 +35,6 @@ const MODAL_STYLE2 = `
   #wepp-install-button:active { transform: scale(.98); }
   #wepp-install-button:disabled { opacity:0.7; cursor: not-allowed; }
   #wepp-skip-button { all: initial; font:inherit; width: 100%; text-align: center; cursor: pointer; color: #a0a0a0; font-size: 14px; text-decoration: underline; }
-`;
-
-const MODAL_STYLE = `
   .card { max-width: 320px; display: flex; align-items: flex-start; justify-content: space-between; border-radius: 0.5rem; background: #606c88; background: -webkit-linear-gradient(to right, #3f4c6b, #606c88); background: linear-gradient(to right top, #3f4c6b, #606c88); padding: 1rem; color: rgb(107, 114, 128); box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4); }
   .icon { height: 2rem; width: 2rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 0.5rem; background-color: #153586; color: rgb(59, 130, 246); }
   .icon svg { height: 1.25rem; width: 1.25rem; }
