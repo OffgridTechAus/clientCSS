@@ -23,9 +23,9 @@ const TEXT = {
   },
 };
 
-const MODAL_STYLE = `
+const MODAL_STYLE2 = `
   .wepp-modal-overlay * { box-sizing: border-box; }
-  .wepp-modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, .5); justify-content: center; align-items: center; z-index: 99999; }
+  .wepp-modal-overlay { display: none; position: fixed; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, .5); justify-content: center; align-items: center; z-index: 99999; padding-top: 10px; padding-bottom: 10px; }
   .wepp-modal-content { min-width: 340px; max-width:340px; background: #fff; border-radius: 10px; position: relative; }
   .wepp-modal-content h1 { font-size: 18px; }
   .wepp-modal-body { display: flex; flex-direction: column; align-items: center; gap: 10px; }
@@ -36,6 +36,48 @@ const MODAL_STYLE = `
   #wepp-install-button:disabled { opacity:0.7; cursor: not-allowed; }
   #wepp-skip-button { all: initial; font:inherit; width: 100%; text-align: center; cursor: pointer; color: #a0a0a0; font-size: 14px; text-decoration: underline; }
 `;
+
+const MODAL_STYLE = `
+  .card { max-width: 320px; display: flex; align-items: flex-start; justify-content: space-between; border-radius: 0.5rem; background: #606c88; background: -webkit-linear-gradient(to right, #3f4c6b, #606c88); background: linear-gradient(to right top, #3f4c6b, #606c88); padding: 1rem; color: rgb(107, 114, 128); box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4); }
+  .icon { height: 2rem; width: 2rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 0.5rem; background-color: #153586; color: rgb(59, 130, 246); }
+  .icon svg { height: 1.25rem; width: 1.25rem; }
+  .content { margin-left: 0.75rem; font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
+  .title { margin-bottom: 0.25rem; font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; color: rgb(255, 255, 255); }
+  .desc { margin-bottom: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; color: rgb(202, 200, 200); }
+  .actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-gap: 0.5rem; gap: 0.5rem; }
+  .download, .notnow { width: 100%; display: inline-flex; justify-content: center; border-radius: 0.5rem; padding: 0.375rem 0.5rem; text-align: center; font-size: 0.75rem; line-height: 1rem; color: rgb(255, 255, 255); outline: 2px solid transparent; border: 1px solid rgba(253, 253, 253, 0.363); }
+  .download { background-color: #284385; font-weight: 600; }
+  .download:hover { background-color: #153586; }
+  .notnow { background-color: #606c88; font-weight: 500; }
+  .notnow:hover { background-color: #3f4c6b; }
+  .close { margin: -0.375rem -0.375rem -0.375rem auto; height: 2rem; width: 2rem; display: inline-flex; border-radius: 0.5rem; background-color: #606c88; padding: 0.375rem; color: rgba(255, 255, 255, 1); border: none; }
+  .close svg { height: 1.25rem; width: 1.25rem; }
+  .close:hover { background-color: rgb(58, 69, 83); }
+`;
+
+const DEFAULT_MODAL_CONTENT = `
+  <div class="card">
+  <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#ffffff" d="M20 14V17.5C20 20.5577 16 20.5 12 20.5C8 20.5 4 20.5577 4 17.5V14M12 15L12 3M12 15L8 11M12 15L16 11"></path> </g></svg>
+  </div>
+  <div class="content">
+      <span class="title">Download out App!</span>
+      <div class="desc" id="wepp-name">Indigos Cafe Margate</div> 
+      <div class="actions">
+          <div>
+              <a href="#" class="download">${TEXT.WAITING}</a>
+          </div>
+          <div>
+              <a href="#" class="notnow">Not now</a> 
+          </div>
+      </div>    
+  </div>
+  <button type="button" class="close">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+  </button>
+  </div>
+`;
+
 
 const IOS_MODAL_CONTENT = `
   <div class="wepp-modal-content" style="padding: 20px;">
@@ -63,7 +105,7 @@ const IOS_MODAL_CONTENT = `
   </div>
 `;
 
-const DEFAULT_MODAL_CONTENT = `
+const DEFAULT_MODAL_CONTENT2 = `
   <div class="wepp-modal-content" style="padding: 20px;">
     <div class="wepp-modal-body">
       <h1 style="margin-top: 0; margin-bottom: 10px;">${TEXT.TITLE}</h1>
